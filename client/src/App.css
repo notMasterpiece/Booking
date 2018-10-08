@@ -1,0 +1,18 @@
+#tg-header {
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.3); }
+
+.tg-tourduration {
+  padding-left: 3px; }
+  .tg-tourduration:before {
+    display: none; }
+
+.material-icons {
+  vertical-align: middle;
+  margin-right: 10px; }
+
+.tg-stars span:after,
+.tg-stars:before {
+  display: none; }
+
+.tg-populartourfoot {
+  padding: 7px 0 0; }
