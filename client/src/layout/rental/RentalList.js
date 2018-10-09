@@ -1,18 +1,16 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
-import {rentals} from '../../rental';
-
 import RentalCard from './RentalCard';
 
-class RentalList extends Component {
-    constructor(props) {
-        super(props);
-    }
+import {connect} from 'react-redux';
 
+class RentalList extends Component {
 
     renderRentalList = () => {
-         return rentals.map(rental => {
+        const {rentals} = this.props.rentals;
+
+        return rentals.map(rental => {
             return <RentalCard
                         key={rental.id}
                         rental={rental}
@@ -21,6 +19,7 @@ class RentalList extends Component {
     };
 
     render() {
+
         return (
             <div className="row">
                 <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -30,11 +29,13 @@ class RentalList extends Component {
                             <div className="clearfix" />
                             <nav className="tg-pagination">
                                 <ul>
-                                    <li className="tg-active"><a>1</a></li>
-                                    <li><a>2</a></li>
-                                    <li><a>3</a></li>
-                                    <li><a>4</a></li>
-                                    <li className="tg-nextpage"><a><i className="fa fa-angle-right" /></a></li>
+                                    <li className="tg-active"><a href='1'>1</a></li>
+                                    <li><a href='1'>2</a></li>
+                                    <li><a href='1'>3</a></li>
+                                    <li><a href='1'>4</a></li>
+                                    <li className="tg-nextpage">
+                                        <a href="1"><i className="fa fa-angle-right" /></a>
+                                    </li>
                                 </ul>
                             </nav>
                         </div>
@@ -45,6 +46,10 @@ class RentalList extends Component {
     }
 }
 
-RentalList.propTypes = {};
+RentalList.propTypes = {
+    rentals: PropTypes.object.isRequired
+};
 
-export default RentalList;
+export default connect(state => ({
+    rentals: state.rentals
+}))(RentalList);

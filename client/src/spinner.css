@@ -148,33 +148,3 @@
     transform: scale(1, 0.2); }
   100% {
     transform: scale(1, 1); } }
-
-a {
-  cursor: pointer; }
-
-#tg-header {
-  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.3);
-  position: fixed;
-  left: 0;
-  top: 0; }
-
-.tg-tourduration {
-  padding-left: 3px; }
-  .tg-tourduration:before {
-    display: none; }
-
-.material-icons {
-  vertical-align: middle;
-  margin-right: 10px; }
-
-.tg-stars span:after,
-.tg-stars:before {
-  display: none; }
-
-.tg-populartourfoot {
-  padding: 7px 0 0; }
-
-.bg-tg {
-  -webkit-background-size: cover;
-  background-size: cover;
-  background-repeat: no-repeat; }

@@ -4,11 +4,11 @@ import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 
 const RentalCard = ({rental}) => {
-    console.log(rental);
-    const {id, title, image, description, dailyRate, createdAt, shared} = rental;
+    const {id, title, image, description, dailyRate, createdAt, shared, category} = rental;
+
     return (
         <div className="col-xs-6 col-sm-4 col-md-3 col-lg-3">
-            <div className="tg-populartour">
+            <div className={`tg-populartour ${category}`}>
                 <figure>
                     <Link to={`/rental/${id}`}><img src={image} alt={title} /></Link>
                     {/*sale*/}

@@ -95,7 +95,7 @@ input:focus,
 .tg-btnviewall,
 .tg-search .tg-destinations li a em,
 .tg-addnav ul li:hover a,
-.tg-breadcrumb li:hover a{ color: #fee133; }
+.tg-breadcrumb li:hover a{ color: #00ACC1; }
 /*=============================================
 			Theme Background Color
 =============================================*/
@@ -109,10 +109,10 @@ input:focus,
 .tg-availhead,
 .navbar-header,
 .tg-btnroundprev:hover,
-.tg-btnroundnext:hover{ background:#fee133; }
+.tg-btnroundnext:hover{ background:#00ACC1; }
 /*=============================================
 			Theme Border Color
 =============================================*/
 blockquote,
 .tg-btnroundprev:hover,
-.tg-btnroundnext:hover{ border-color: #fee133; }
+.tg-btnroundnext:hover{ border-color: #00ACC1; }
