@@ -9,7 +9,7 @@ export const fetchRentalById = rentalId => dispatch => {
     setTimeout(function () {
         singleRental = rentals.filter(rental => parseFloat(rental.id) === parseFloat(rentalId));
         dispatch(acyncFetchRentalById(singleRental));
-    }, 3000);
+    }, 0);
 
 };
 

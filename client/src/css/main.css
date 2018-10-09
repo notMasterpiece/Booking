@@ -386,7 +386,7 @@ address {
 }
 
 .tg-sectionspace {
-    padding: 120px 0;
+    padding: 80px 0;
 }
 
 .tg-locationmap {
@@ -1955,6 +1955,7 @@ address {
     width: 100%;
     float: left;
     position: static;
+    margin-bottom: 40px;
 }
 
 .tg-populartours .tg-btnroundprev {
@@ -1969,6 +1970,7 @@ address {
     width: 100%;
     float: left;
     background: #fff;
+    margin-bottom: 50px;
 }
 
 .tg-populartour figure {
@@ -4618,10 +4620,6 @@ blockquote {
 .tg-listing .tg-sectiontitle {
     padding: 0;
     width: auto;
-}
-
-.tg-listing .tg-populartour, .tg-listing .tg-trendingtrip {
-    padding: 70px 0 0;
 }
 
 .tg-listing .tg-pagination {

@@ -9,7 +9,9 @@ class Main extends Component {
         return (
             <main id="tg-main" className="tg-main tg-sectionspace tg-haslayout">
                 <div className="container-fluid">
-                    <h1>Ви можете замовити</h1>
+                    <div className="col-sm-12">
+                        <h2>Ви можете замовити</h2>
+                    </div>
                     <RentalList />
                 </div>
             </main>
