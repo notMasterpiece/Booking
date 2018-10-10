@@ -11,8 +11,7 @@ export const rentals = [
         guests: 2,
         description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh...',
         dailyRate: 23,
-        shared: true,
-        createdAt: '23/04/18'
+        shared: true
     },
     {
         id: 2,
@@ -26,8 +25,7 @@ export const rentals = [
         guests: 2,
         description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh...',
         dailyRate: 56,
-        shared: false,
-        createdAt: '24/04/18'
+        shared: false
     },
     {
         id: 3,
@@ -41,8 +39,7 @@ export const rentals = [
         guests: 2,
         description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh...',
         dailyRate: 223,
-        shared: true,
-        createdAt: '25/04/18'
+        shared: true
     },
     {
         id: 1,

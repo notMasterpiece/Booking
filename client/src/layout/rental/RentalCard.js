@@ -19,7 +19,7 @@ const RentalCard = ({rental}) => {
                         <h3><Link to={`/rental/${id}`}>{title}</Link></h3>
                     </div>
                     <div className="tg-description">
-                        <p>{description}</p>
+                        <p><mark>{description}</mark></p>
                     </div>
                     <div className="tg-populartourfoot">
                         <div className="tg-durationrating">

@@ -1,12 +1,19 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const Rental = require('./models/rentalModel');
+const fakeDB = require('./fakeDB');
+const rentalRoute = require('./routes/rentals');
 
 const config = require('./config/dev');
 const app = express();
 
 
 mongoose.connect(config.DB_URI)
-    .then(() => console.log('connecting to mongo db'))
+    .then(() => {
+        console.log('connecting to mongo db');
+        const fake = new fakeDB;
+        fake.seedDB();
+    })
     .catch(err => console.log(err));
 
 
@@ -25,10 +32,10 @@ app.get('/', (req, res) => {
 
 
 
+app.use('/api/v1/rentals', rentalRoute);
 
 
 
-const PORT = process.env.PORT || 3001;
-app.listen(PORT, () => {
-    console.log(`server start on port ${PORT}`);
-});
+
+require('./start_path/port')(app);
+
