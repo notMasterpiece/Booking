@@ -4,6 +4,7 @@ import {BrowserRouter as Router, Route, Redirect} from 'react-router-dom';
 
 
 import Header from './layout/Header';
+import Footer from './layout/Footer';
 import Main from './layout/Main';
 import RentalDetail from './layout/rental/RentalDetail';
 
@@ -28,6 +29,7 @@ class App extends Component {
                     <Route exact path='/' render={() => <Redirect to='/rentals' />} />
                     <Route exact path='/rentals' component={Main} />
                     <Route path='/rental/:id' component={RentalDetail} />
+                    <Footer />
                 </div>
             </Router>
         </Provider>
