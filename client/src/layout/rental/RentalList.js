@@ -4,18 +4,28 @@ import PropTypes from 'prop-types';
 import RentalCard from './RentalCard';
 
 import {connect} from 'react-redux';
+import {fetchAllRentals} from '../../action/index';
 
 class RentalList extends Component {
 
+
+    componentWillMount() {
+        this.props.fetchAllRentals();
+    }
+
+
     renderRentalList = () => {
         const {rentals} = this.props.rentals;
+        if(rentals.length > 0) {
+            return rentals.map(rental => {
+                return <RentalCard key={rental._id} rental={rental} />
+            })
 
-        return rentals.map(rental => {
-            return <RentalCard
-                        key={rental.id}
-                        rental={rental}
-                    />
-        })
+        } else {
+            return  <p>Loading ...</p>
+        }
+
+
     };
 
     render() {
@@ -52,4 +62,4 @@ RentalList.propTypes = {
 
 export default connect(state => ({
     rentals: state.rentals
-}))(RentalList);
+}), {fetchAllRentals})(RentalList);

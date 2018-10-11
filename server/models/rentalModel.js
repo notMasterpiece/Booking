@@ -24,12 +24,18 @@ const renatalSchema = new Schema({
         required: true,
         lowercase: true
     },
-    datailimage: {
+    datailImage: {
         type: String,
         required: true,
         lowercase: true
     },
-    bedrooms: Number,
+    beds: {
+        type: String,
+        required: true,
+        lowercase: true
+    },
+    betrooms: Number,
+    guests: Number,
     shared: Boolean,
     description: {
        type: String,

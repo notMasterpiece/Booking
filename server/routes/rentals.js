@@ -16,7 +16,7 @@ router.get('/', ( req, res ) => {
 router.get('/:id', ( req, res ) => {
     Rental.findById({_id: req.params.id}, (err, rental) => {
 
-        if (!rental) return res.status(422).json({errors: [{msg: 'Rental not found'}] });
+        if (!rental) return res.status(422).json({errors: {msg: 'Rental not found'} });
 
         res.json(rental);
 

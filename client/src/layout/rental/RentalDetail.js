@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import {fetchRentalById, deleteSingleRental} from '../../action/index';
 
 import Spinner from '../spinner/Spinner';
+import MapWithAMarker from '../google-maps/Map';
 
 class RentalDetail extends Component {
 
@@ -23,14 +24,19 @@ class RentalDetail extends Component {
 
 
     render() {
+        if( this.props.rentals.errors && Object.keys(this.props.rentals.errors).length > 0 ) {
+            return <h1 className='tg-sectionspace'>{this.props.rentals.errors.msg}</h1>
+        }
 
 
-        if(this.props.singleRental.singleRental) {
-            const { title, image, datailimage, description } = this.props.singleRental.singleRental[0];
+
+        if(this.props.rentals.singleRental) {
+
+            const { title, image, datailImage, description, betrooms, guests, beds, city } = this.props.rentals.singleRental;
 
             return (
                 <Fragment>
-                    <section className="tg-parallax tg-innerbanner bg-tg" style={{backgroundImage : `url(${datailimage})`}}>
+                    <section className="tg-parallax tg-innerbanner bg-tg" style={{backgroundImage : `url(${datailImage})`}}>
                         <div className="tg-sectionspace tg-haslayout">
                             <div className="container">
                                 <div className="row">
@@ -48,10 +54,10 @@ class RentalDetail extends Component {
                     </section>
 
                     <main id="tg-main" className="tg-main tg-sectionspace tg-haslayout tg-bglight">
-                        <div className="container">
+                        <div className="container-fluid">
                             <div className="row">
                                 <div id="tg-twocolumns" className="tg-twocolumns">
-                                    <div className="col-xs-12 col-sm-8 col-md-8 col-lg-8 pull-left">
+                                    <div className="col-xs-12 col-sm-6 pull-left">
                                         <div id="tg-content" className="tg-content">
                                             <div className="tg-listing tg-listingvsix">
                                                 <div className="tg-populartour tg-populartourvtwo">
@@ -112,14 +118,16 @@ class RentalDetail extends Component {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="col-xs-12 col-sm-4 col-md-4 col-lg-4 pull-right">
+                                    <div className="col-xs-12 col-sm-6 pull-right">
                                         <aside id="tg-sidebar" className="tg-sidebar">
                                             <div className="tg-widget tg-widgetlatesttour">
-                                                <div className="tg-widgettitle">
-                                                    <h3>Latest Tour</h3>
-                                                </div>
                                                 <div className="tg-widgetcontent">
-                                                    Lorem ipsum.
+                                                    <MapWithAMarker
+                                                        googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyAZzdhlz8kH-MFnCrbJ_NNOHQTg5M_W__U"
+                                                        loadingElement={<div style={{ height: `100%` }} />}
+                                                        containerElement={<div style={{ height: `400px` }} />}
+                                                        mapElement={<div style={{ height: `100%` }} />}
+                                                    />
                                                 </div>
                                             </div>
 
@@ -129,11 +137,9 @@ class RentalDetail extends Component {
                                                 </div>
                                                 <div className="tg-widgetcontent">
                                                     <ul>
-                                                        <li><a href="#"> <i className="material-icons">trending_up</i> Family Friendly Tours</a></li>
-                                                        <li><a href="#"> <i className="material-icons">trending_up</i> Behave in Foreign Land</a></li>
-                                                        <li><a href="#"> <i className="material-icons">trending_up</i> Hiking in The Wild</a></li>
-                                                        <li><a href="#"> <i className="material-icons">trending_up</i> Luxury Tours in Alps</a></li>
-                                                        <li><a href="#"> <i className="material-icons">trending_up</i> Holiday &amp; Seasonal Tours</a></li>
+                                                        <li><i className="material-icons">trending_up</i> {betrooms} betrooms</li>
+                                                        <li><i className="material-icons">trending_up</i> {guests} guests</li>
+                                                        <li><i className="material-icons">trending_up</i> {beds} beds</li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -155,9 +161,9 @@ class RentalDetail extends Component {
 
 RentalDetail.propTypes = {
     fetchRentalById: PropTypes.func.isRequired,
-    singleRental: PropTypes.object.isRequired
+    rentals: PropTypes.object.isRequired
 };
 
 export default connect(state => ({
-    singleRental: state.rentals
+    rentals: state.rentals
 }), {fetchRentalById, deleteSingleRental})(RentalDetail);
