@@ -21,7 +21,7 @@ class fakeDB {
             {
                 id: 2,
                 title: 'Best of Canada Tours and Travel',
-                city: 'Dybshe',
+                city: 'Dybsche',
                 street: 'this is streat',
                 category: 'combo',
                 image: 'http://wahabali.com/work/travelu/images/tours/img-04.jpg',

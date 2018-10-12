@@ -4,151 +4,185 @@ import {
     withGoogleMap,
     GoogleMap,
     Marker,
+    Circle
 } from "react-google-maps";
 
-const MapWithAMarker = withScriptjs(withGoogleMap(() =>
-    <GoogleMap
+
+const MapWithAMarker = (props) => {
+    const { position } = props;
+    return <GoogleMap
         defaultZoom={12}
-        defaultCenter={{ lat: 49.5492056, lng: 25.5789634 }}
+        center={position}
         options={mapOptions} >
-        {/*<Marker*/}
-            {/*position={{ lat: -34.397, lng: 150.644 }}*/}
-        {/*/>*/}
+        <Circle
+            center={position}
+            radius={1000}
+        />
     </GoogleMap>
-));
+};
+
+
+const MapWithPosition = Wrap => {
+    return class extends React.Component {
+        constructor(props) {
+            super(props);
+
+            this.state = {
+                title: '',
+                position: {
+                    lat: 0,
+                    lng: 0
+                }
+            }
+        }
+
+
+        componentDidMount() {
+            this.geocodeLocation();
+        }
+
+        geocodeLocation = () => {
+            const { location } = this.props;
+            const geocoder = new window.google.maps.Geocoder();
+
+            geocoder.geocode({address: location}, (res, status) => {
+                console.log(res);
+                debugger;
+                if(status === 'OK') {
+                    const title = res[0].formatted_address;
+                    const location = res[0].geometry.location;
+                    const position = {
+                        lat: location.lat(),
+                        lng: location.lng()
+
+                    };
+
+                    this.setState({
+                        position,
+                        title
+                    })
+                }
+            })
+
+
+        };
+
+
+        render() {
+            return <Wrap {...this.state} />
+        }
+    }
+};
+
 
 const mapOptions = {
     disableDefaultUI: true,
     styles: [
         {
-            "featureType": "all",
-            "elementType": "labels.text.fill",
+            "featureType": "administrative.locality",
+            "elementType": "all",
             "stylers": [
                 {
-                    "saturation": 36
+                    "hue": "#2c2e33"
                 },
                 {
-                    "color": "#000000"
+                    "saturation": 7
                 },
                 {
-                    "lightness": 40
-                }
-            ]
-        },
-        {
-            "featureType": "all",
-            "elementType": "labels.text.stroke",
-            "stylers": [
+                    "lightness": 19
+                },
                 {
                     "visibility": "on"
-                },
-                {
-                    "color": "#000000"
-                },
-                {
-                    "lightness": 16
                 }
             ]
         },
         {
-            "featureType": "all",
-            "elementType": "labels.icon",
+            "featureType": "landscape",
+            "elementType": "all",
             "stylers": [
+                {
+                    "hue": "#ffffff"
+                },
+                {
+                    "saturation": -100
+                },
+                {
+                    "lightness": 100
+                },
+                {
+                    "visibility": "simplified"
+                }
+            ]
+        },
+        {
+            "featureType": "poi",
+            "elementType": "all",
+            "stylers": [
+                {
+                    "hue": "#ffffff"
+                },
+                {
+                    "saturation": -100
+                },
+                {
+                    "lightness": 100
+                },
                 {
                     "visibility": "off"
                 }
             ]
         },
         {
-            "featureType": "administrative",
-            "elementType": "geometry.fill",
+            "featureType": "road",
+            "elementType": "geometry",
             "stylers": [
                 {
-                    "lightness": 20
+                    "hue": "#bbc0c4"
+                },
+                {
+                    "saturation": -93
+                },
+                {
+                    "lightness": 31
                 },
                 {
                     "visibility": "simplified"
-                },
-                {
-                    "hue": "#0057ff"
                 }
             ]
         },
         {
-            "featureType": "administrative",
-            "elementType": "geometry.stroke",
+            "featureType": "road",
+            "elementType": "labels",
             "stylers": [
                 {
-                    "color": "#000000"
+                    "hue": "#bbc0c4"
                 },
                 {
-                    "lightness": 17
+                    "saturation": -93
                 },
                 {
-                    "weight": 1.2
-                }
-            ]
-        },
-        {
-            "featureType": "landscape",
-            "elementType": "geometry",
-            "stylers": [
-                {
-                    "color": "#000000"
+                    "lightness": 31
                 },
                 {
-                    "lightness": 20
-                }
-            ]
-        },
-        {
-            "featureType": "poi",
-            "elementType": "geometry",
-            "stylers": [
-                {
-                    "color": "#000000"
-                },
-                {
-                    "lightness": 21
-                }
-            ]
-        },
-        {
-            "featureType": "road.highway",
-            "elementType": "geometry.fill",
-            "stylers": [
-                {
-                    "color": "#000000"
-                },
-                {
-                    "lightness": 17
-                }
-            ]
-        },
-        {
-            "featureType": "road.highway",
-            "elementType": "geometry.stroke",
-            "stylers": [
-                {
-                    "color": "#000000"
-                },
-                {
-                    "lightness": 29
-                },
-                {
-                    "weight": 0.2
+                    "visibility": "on"
                 }
             ]
         },
         {
             "featureType": "road.arterial",
-            "elementType": "geometry",
+            "elementType": "labels",
             "stylers": [
                 {
-                    "color": "#000000"
+                    "hue": "#bbc0c4"
                 },
                 {
-                    "lightness": 18
+                    "saturation": -93
+                },
+                {
+                    "lightness": -2
+                },
+                {
+                    "visibility": "simplified"
                 }
             ]
         },
@@ -157,38 +191,56 @@ const mapOptions = {
             "elementType": "geometry",
             "stylers": [
                 {
-                    "color": "#000000"
+                    "hue": "#e9ebed"
                 },
                 {
-                    "lightness": 16
+                    "saturation": -90
+                },
+                {
+                    "lightness": -8
+                },
+                {
+                    "visibility": "simplified"
                 }
             ]
         },
         {
             "featureType": "transit",
-            "elementType": "geometry",
+            "elementType": "all",
             "stylers": [
                 {
-                    "color": "#000000"
+                    "hue": "#e9ebed"
                 },
                 {
-                    "lightness": 19
+                    "saturation": 10
+                },
+                {
+                    "lightness": 69
+                },
+                {
+                    "visibility": "on"
                 }
             ]
         },
         {
             "featureType": "water",
-            "elementType": "geometry",
+            "elementType": "all",
             "stylers": [
                 {
-                    "color": "#2e3844"
+                    "hue": "#e9ebed"
                 },
                 {
-                    "lightness": 17
+                    "saturation": -78
+                },
+                {
+                    "lightness": 67
+                },
+                {
+                    "visibility": "simplified"
                 }
             ]
         }
     ]
 };
 
-export default MapWithAMarker;
+export default withScriptjs(withGoogleMap(MapWithPosition(MapWithAMarker)));

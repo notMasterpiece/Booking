@@ -170,3 +170,20 @@ a {
 
 .container-fluid {
   max-width: 1600px; }
+
+.tg-sectionspace {
+  min-height: 500px; }
+
+.bg {
+  position: absolute;
+  z-index: -1;
+  top: 0px;
+  left: 0px;
+  bottom: 0px;
+  right: 0px;
+  overflow: hidden;
+  background-size: cover;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: 0% 50%;
+  background-image: url(http://wahabali.com/work/travelu/images/singup-img.jpg); }

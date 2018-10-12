@@ -123,6 +123,7 @@ class RentalDetail extends Component {
                                             <div className="tg-widget tg-widgetlatesttour">
                                                 <div className="tg-widgetcontent">
                                                     <MapWithAMarker
+                                                        location={city}
                                                         googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyAZzdhlz8kH-MFnCrbJ_NNOHQTg5M_W__U"
                                                         loadingElement={<div style={{ height: `100%` }} />}
                                                         containerElement={<div style={{ height: `400px` }} />}

@@ -6,6 +6,8 @@ import {BrowserRouter as Router, Route, Redirect} from 'react-router-dom';
 import Header from './layout/Header';
 import Footer from './layout/Footer';
 import Main from './layout/Main';
+import About from './layout/about/About';
+import Login from './layout/login/Login';
 import RentalDetail from './layout/rental/RentalDetail';
 
 //redux
@@ -29,6 +31,8 @@ class App extends Component {
                     <Route exact path='/' render={() => <Redirect to='/rentals' />} />
                     <Route exact path='/rentals' component={Main} />
                     <Route path='/rental/:id' component={RentalDetail} />
+                    <Route path='/about' component={About} />
+                    <Route path='/sing-up' component={Login} />
                     <Footer />
                 </div>
             </Router>

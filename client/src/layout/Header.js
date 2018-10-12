@@ -26,7 +26,7 @@ class Header extends Component {
                                         className="icon-twitter-social-outlined-logo" /></a></li>
                                 </ul>
                                 <div className="tg-userbox">
-                                    <a id="tg-btnsignin" className="tg-btn" href="#tg-loginsingup"><span>sign in</span></a>
+                                    <Link to={'/sing-up'} id="tg-btnsignin" className="tg-btn"><span>sign in</span></Link>
                                     <div className="dropdown tg-dropdown">
                                         <button className="tg-btndropdown" id="tg-dropdowndashboard" type="button"
                                                 data-toggle="dropdown">
@@ -69,7 +69,7 @@ class Header extends Component {
                                         <li className="menu-item-has-children menu-item-has-mega-menu"><a>listings</a></li>
                                         <li className="menu-item-has-children"><a>pages</a></li>
                                         <li><a>shop</a></li>
-                                        <li><a>blog</a></li>
+                                        <li><Link to={'/about'}>About</Link></li>
                                     </ul>
                                 </div>
                             </nav>
